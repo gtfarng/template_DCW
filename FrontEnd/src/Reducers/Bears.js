@@ -1,3 +1,5 @@
+//import {FETCH_BEARS } from '../Actions/Bears';
+
 export const bearReducer = (state = 0, action) => {
     switch (action.type) {
         case 'GET_BEARS_SUCCESS':
@@ -5,8 +7,19 @@ export const bearReducer = (state = 0, action) => {
             return action.bears
         case 'GET_BEARS_FAILED':
           //  console.log('action: Failed')
-            return action.bears
+            return action.bears     
         default:
             return state
     }
 }
+/*
+export const newbearReducer = (state = 0, action) => {
+    switch(action.type) {
+        case FETCH_BEARS:
+            return action.payload.data;
+        default:
+            return state;
+    }
+}
+
+*/

@@ -6,12 +6,13 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
-import { numberReducer } from './Reducers/Counter'
+//import { numberReducer } from './Reducers/Counter'
 import { bearReducer } from './Reducers/Bears'
+//import { newbearReducer } from './Reducers/Bears'
 //import Count from './Component/Count'
 import Bear from './Component/Bear'
 
-export const rootReducer = combineReducers({ number: numberReducer, bears: bearReducer })
+export const rootReducer = combineReducers({ bears: bearReducer })
 export const store = createStore(rootReducer, applyMiddleware(logger, thunk))
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <br />
-        <h1>Workshop React App </h1>
+        <h1>TEMPLATE CRUD BEARS </h1>
         <br />
       </header>
 

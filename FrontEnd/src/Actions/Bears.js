@@ -15,3 +15,17 @@ export const getBears = () => async (dispatch) => {
        dispatch(getBearsFailed());
    }
 }
+
+/*
+const ROOT_URL = 'http://localhost:8000/api/Bears';
+
+export const FETCH_BEARS = 'fetch_bears';
+
+export function fetchBears() {
+    const request = axios.get(ROOT_URL);
+    return {
+        type: FETCH_BEARS,
+        payload: request
+    };
+}
+*/
