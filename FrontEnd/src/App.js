@@ -7,12 +7,14 @@ import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
 //import { numberReducer } from './Reducers/Counter'
-import { bearReducer } from './Reducers/Bears'
+//import { bearReducer } from './Reducers/Bears'
+import { studentReducer } from './Reducers/Students'
 //import { newbearReducer } from './Reducers/Bears'
 //import Count from './Component/Count'
-import Bear from './Component/Bear'
+//import Bear from './Component/Bear'
+import Student from './Component/Student'
 
-export const rootReducer = combineReducers({ bears: bearReducer })
+export const rootReducer = combineReducers({ students: studentReducer })
 export const store = createStore(rootReducer, applyMiddleware(logger, thunk))
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <br />
-        <h1>TEMPLATE CRUD BEARS </h1>
+        <h1>CRUD STUDENTS </h1>
         <br />
       </header>
 
@@ -29,7 +31,7 @@ function App() {
         <br />
         <div class="card container">
           <div class="card-body">
-            <Bear />
+            <Student />
           </div>
         </div>
 <br/>
