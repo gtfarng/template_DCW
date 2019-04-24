@@ -8,7 +8,7 @@ import thunk from 'redux-thunk'
 
 import { numberReducer } from './Reducers/Counter'
 import { bearReducer } from './Reducers/Bears'
-import Count from './Component/Count'
+//import Count from './Component/Count'
 import Bear from './Component/Bear'
 
 export const rootReducer = combineReducers({ number: numberReducer, bears: bearReducer })
@@ -31,15 +31,7 @@ function App() {
             <Bear />
           </div>
         </div>
-
-        <br />
-        <div class="card container">
-          <div class="card-body">
-            <Count />
-          </div>
-        </div>
-        <br />
-
+<br/>
       </Provider>
 
       <header className="App-header">
