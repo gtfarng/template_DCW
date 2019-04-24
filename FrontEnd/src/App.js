@@ -6,20 +6,24 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
-import { numberReducer } from './Reducers/Counter'
-import { bearReducer } from './Reducers/Bears'
-import Count from './Component/Count'
-import Bear from './Component/Bear'
+//import { numberReducer } from './Reducers/Counter'
+//import { bearReducer } from './Reducers/Bears'
+import {countryReducer} from './Reducers/Countries'
+//import Count from './Component/Count'
+//import Bear from './Component/Bear'
+import Country from './Component/Country'
 
-export const rootReducer = combineReducers({ number: numberReducer, bears: bearReducer })
+export const rootReducer = combineReducers({ countries: countryReducer })
 export const store = createStore(rootReducer, applyMiddleware(logger, thunk))
+
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <br />
-        <h1>Workshop React App </h1>
+        <h1>Countries CRUD </h1>
         <br />
       </header>
 
@@ -28,18 +32,13 @@ function App() {
         <br />
         <div class="card container">
           <div class="card-body">
-            <Bear />
+            <Country />
           </div>
         </div>
 
         <br />
-        <div class="card container">
-          <div class="card-body">
-            <Count />
-          </div>
-        </div>
-        <br />
-
+       
+       
       </Provider>
 
       <header className="App-header">
