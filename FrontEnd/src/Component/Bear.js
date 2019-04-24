@@ -12,8 +12,8 @@ class Bear extends Component {
         super(props)
         this.state = {
             bears: [],
-            id: 0, name: '', weight: '',
-            newid: 0, newname: 'GTfarng', newweight: 55
+            id: 0, name: '', weight: '',height:'',group:'',
+            newid: 0, newname: 'GTfarng', newweight: 55, newheight:'170', newgroup:'A'
         }
     }
 
@@ -27,7 +27,7 @@ class Bear extends Component {
             return this.props.bears.map((bear, index) => {
                 // console.log( bear.name)
                 return (<li key={index}>
-                    {bear.name} : {bear.weight}
+                    {bear.name} : {bear.weight} Kg. {bear.height} Cm. Group {bear.group}
                     &nbsp;&nbsp;<button onClick={() => this.getBear(index)}>GET</button>
                     &nbsp;&nbsp;<button onClick={() => this.deleteBear(index)}>DELETE</button>
                     &nbsp;&nbsp;<button onClick={() => this.getBear(index)}>EDIT</button>
@@ -49,7 +49,9 @@ class Bear extends Component {
         e.preventDefault()
         axios.post(`${URL}/Bears`, {
             name: this.state.name,
-            weight: this.state.weight
+            weight: this.state.weight,
+            height: this.state.height,
+            group: this.state.group
         })
             .then((res) => {
                 console.log('Create a new bear: ' + res);
@@ -68,7 +70,7 @@ class Bear extends Component {
 
     editBear = (e) => {
         e.preventDefault()
-        axios.put(`${URL}/Bears/${this.state.newid}`, { name: this.state.newname, weight: this.state.newweight })
+        axios.put(`${URL}/Bears/${this.state.newid}`, { name: this.state.newname, weight: this.state.newweight, height: this.state.newheight, group: this.state.newgroup })
             .then((response) => {
                 console.log('Create a new bear: ' + response);
                 this.props.getBears()
@@ -81,7 +83,7 @@ class Bear extends Component {
             .then((res) => {
                 // const {name} = res.data
                 // console.log('res', res.data)
-                this.setState({ newid: res.data.id, newname: res.data.name, newweight: res.data.weight })
+                this.setState({ newid: res.data.id, newname: res.data.name, newweight: res.data.weight,newheight: res.data.height,newgroup: res.data.group })
                 //console.log('state', this.state)
             })
     }
@@ -97,7 +99,9 @@ class Bear extends Component {
                         <form onSubmit={this.addBear}>
                             <br />
                             <input type="text" name="name" placeholder="Enter Name Bear" value={this.state.name} onChange={this.handleChange} />&nbsp;
-                    <input type="number" name="weight" placeholder="Enter weight Bear" value={this.state.weight} onChange={this.handleChange} />&nbsp;
+                            <input type="number" name="weight" placeholder="Enter Weight Bear" value={this.state.weight} onChange={this.handleChange} />&nbsp;
+                            <input type="number" name="height" placeholder="Enter Height Bear" value={this.state.height} onChange={this.handleChange} />&nbsp;
+                            <input type="text" name="group" placeholder="Enter Group Bear" value={this.state.group} onChange={this.handleChange} />&nbsp;
                     <br />
                             <br />
                             <button>Submit</button>
@@ -125,8 +129,12 @@ class Bear extends Component {
                 <div class="card container">
                     <div class="card-body">
                         <h2>Get Bear</h2>
-                        <br />
-                        {this.state.newname} :  {this.state.newweight}
+                       
+                      ID : {this.state.newid}<br/>
+                       Name : {this.state.newname}<br/>
+                        Weight : {this.state.newweight} Kg.<br/> 
+                        Height : {this.state.newheight} Cm.<br/>
+                          Group : {this.state.newgroup}
                         <br />
                     </div>
                 </div> <br />
@@ -139,8 +147,10 @@ class Bear extends Component {
                         <h2>Edit Bear</h2>
                         <form onSubmit={this.editBear}>
                             <br />
-                            <input type="text" name="newname" placeholder="Edit Name Bear" value={this.state.newname} onChange={this.handleChangenew} />&nbsp;
-                    <input type="number" name="newweight" placeholder="Edit weight Bear" value={this.state.newweight} onChange={this.handleChangenew} />&nbsp;
+                          Name   : <input type="text" name="newname" placeholder="Edit Name Bear" value={this.state.newname} onChange={this.handleChangenew} />&nbsp;<br/>
+                          Weight : <input type="number" name="newweight" placeholder="Edit Weight Bear" value={this.state.newweight} onChange={this.handleChangenew} />&nbsp;<br/>
+                          Height : <input type="number" name="newheight" placeholder="Edit Height Bear" value={this.state.newheight} onChange={this.handleChangenew} />&nbsp;<br/>
+                          Group  : <input type="text" name="newgroup" placeholder="Edit Group Bear" value={this.state.newgroup} onChange={this.handleChangenew} />&nbsp;<br/>
                     <br />
                             <br />
                             <button>UPDATE</button>
